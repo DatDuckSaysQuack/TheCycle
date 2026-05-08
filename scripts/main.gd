@@ -211,7 +211,7 @@ func _update_flood(delta: float) -> void:
 			var intensity: float = b["health"] / BARRIER_MAX_HEALTH
 			node.color = Color(0.64, 1.0, 0.92, 0.25 + intensity * 0.75)
 	_prune_broken_barriers()
-	var speed := max(5.0, FLOOD_BASE_SPEED * speed_mod)
+	var speed: float = max(5.0, FLOOD_BASE_SPEED * speed_mod)
 	flood_x += speed * delta
 	flood_wall.position.x = flood_x - flood_wall.size.x
 	flood_survival_time += delta
@@ -293,8 +293,8 @@ func _refresh_ui() -> void:
 
 	# Clearer flood win/loss timer messaging.
 	if extinction_triggered and not limbo_state and not failure_state:
-		var survive_remaining := max(0.0, 30.0 - flood_survival_time)
-		var dist_to_center := max(0.0, SETTLEMENT_CENTER.x - flood_x)
+		var survive_remaining: float = max(0.0, 30.0 - flood_survival_time)
+		var dist_to_center: float = max(0.0, SETTLEMENT_CENTER.x - flood_x)
 		ui_flood_timer.text = "Containment timer: %.1fs remaining | Flood distance to settlement: %.0f px | Barriers active: %d" % [survive_remaining, dist_to_center, barriers.size()]
 	elif limbo_state:
 		ui_flood_timer.text = "Containment complete. Flood suspended in limbo."

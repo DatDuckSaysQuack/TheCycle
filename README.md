@@ -44,3 +44,5 @@ A small 2D top-down god-game prototype where extinction is invoked by an unusual
 - Add proper building placement UI on valid tiles.
 - Expand objectives and events into a dynamic narrative system.
 - Add restart/new-cycle flow and meta-progression.
+
+<!-- test -->

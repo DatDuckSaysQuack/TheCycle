@@ -120,7 +120,7 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var pos: Vector2 = event.position
+		var pos := event.position
 		if MAP_RECT.has_point(pos) and extinction_triggered and not limbo_state and not failure_state:
 			_place_barrier(pos)
 

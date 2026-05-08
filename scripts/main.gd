@@ -183,7 +183,7 @@ func _check_extinction_condition(delta: float) -> void:
 	if not extinction_vulnerable or extinction_triggered:
 		polly_on_rock_hold_time = 0.0
 		return
-	var polly_center := $Polly.position + $Polly.size * 0.5
+	var polly_center: Vector2 = $Polly.position + $Polly.size * 0.5
 	var rock_rect := Rect2(rock.position, rock.size)
 	if polly_holding_ball and rock_rect.grow(8).has_point(polly_center):
 		polly_on_rock_hold_time += delta
@@ -208,7 +208,7 @@ func _update_flood(delta: float) -> void:
 			speed_mod *= lerp(1.0, FLOOD_BARRIER_SLOW, health_ratio)
 			b["health"] = max(0.0, b["health"] - BARRIER_DAMAGE_PER_SEC * delta)
 			var node: ColorRect = b["node"]
-			var intensity := b["health"] / BARRIER_MAX_HEALTH
+			var intensity: float = b["health"] / BARRIER_MAX_HEALTH
 			node.color = Color(0.64, 1.0, 0.92, 0.25 + intensity * 0.75)
 	_prune_broken_barriers()
 	var speed := max(5.0, FLOOD_BASE_SPEED * speed_mod)
@@ -259,7 +259,7 @@ func _prune_broken_barriers() -> void:
 
 func _refresh_ui() -> void:
 	var live_count := _living_villager_count()
-	var polly_center := $Polly.position + $Polly.size * 0.5
+	var polly_center: Vector2 = $Polly.position + $Polly.size * 0.5
 	var rock_rect := Rect2(rock.position, rock.size)
 	var polly_near_rock := rock_rect.grow(38).has_point(polly_center)
 
